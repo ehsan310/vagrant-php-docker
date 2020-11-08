@@ -1,0 +1,8 @@
+Vagrant.configure("2") do |config|
+  config.vm.provider "docker" do |d|
+    d.build_dir = "."
+    d.force_host_vm = true ##This is due to Docker compatibility issue with MacOS
+    d.vagrant_vagrantfile = "./HV-Vagrantfile" ##This is due to Docker compatibility issue with MacOS
+  end
+  config.vm.network "forwarded_port", guest: 80, host: 80, auto_correct: true
+end
